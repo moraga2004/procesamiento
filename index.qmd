@@ -1,0 +1,145 @@
+---
+title: "Evolución del aporte de la agricultura al PIB en distintos países."
+author: "Franchesca Moraga"
+date: "18 de mayo 2025"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    code-fold: true
+    number-sections: true
+editor: visual
+---
+
+# Introducción
+
+La agricultura ha sido históricamente una de las actividades económicas fundamentales en muchas regiones del mundo. En países en desarrollo, especialmente en América Latina, el sector agrícola no solo ha representado una fuente importante de empleo, sino también un componente esencial del Producto Interno Bruto (PIB). Este sector ha sido clave para garantizar la seguridad alimentaria, promover la estabilidad social y contribuir a la generación de divisas mediante la exportación de productos agrícolas.
+
+Sin embargo, con el paso del tiempo, muchos países han experimentado procesos de transformación económica que han modificado significativamente la participación relativa de este sector en sus economías. El crecimiento industrial, la urbanización acelerada y el auge de los servicios han desplazado, en muchos casos, la importancia del sector agrícola. A pesar de esto, la agricultura sigue siendo vital en términos de generación de empleo rural y desarrollo regional.
+
+![Análisis y perspectivas de la agricultura en América Latina](agriculturalatinoamerica.jpg)
+
+*Fuente: [Food News Latam](https://www.foodnewslatam.com/7569-análisis-y-perspectivas-de-la-agricultura-y-para-2018.html)*
+
+
+Este sitio presenta un análisis exploratorio sobre la evolución del aporte del sector agrícola al PIB en distintos países entre 1960 y 2020. Para ello, se utiliza un conjunto de datos proporcionado por el Banco Mundial, obtenido a través de la plataforma Kaggle. El enfoque se centra en países de América Latina, como Costa Rica, Nicaragua, Guatemala, El Salvador y Panamá, con el objetivo de comparar sus trayectorias económicas en relación con la participación del sector agrícola.
+
+Este análisis busca entender mejor cómo se han comportado estos países a lo largo del tiempo en cuanto al peso que el sector agrícola representa dentro de sus economías. Entre las principales preguntas que se plantean destacan: ¿cómo ha cambiado el peso relativo del sector agrícola en la economía costarricense?, ¿existen patrones similares entre los países de la región?, ¿qué factores podrían estar detrás de estos cambios?
+
+El estudio de estos cambios es importante, ya que permite identificar tendencias que podrían estar relacionadas con la diversificación económica, el desarrollo tecnológico, las políticas públicas, o incluso con fenómenos sociales y ambientales que afectan al sector agrícola.
+------------------------------------------------------------------------
+
+# Conjunto de datos
+
+## Descripción general
+
+El conjunto de datos fue publicado por el **Banco Mundial** y contiene estadísticas anuales sobre el porcentaje del PIB que corresponde al sector agrícola en más de 200 países. La cobertura temporal va desde el año **1960 hasta 2020**, y los datos están expresados en porcentajes anuales del PIB.
+
+La fuente original de los datos puede consultarse en este [enlace al Banco Mundial](https://data.worldbank.org/indicator/NV.AGR.TOTL.ZS).
+
+## Principales variables
+
+Las columnas principales del conjunto de datos son:
+
+-   `Country Name`: nombre del país.
+-   `Country Code`: código estándar de tres letras.
+-   `Indicator Name`: nombre del indicador.
+-   `Indicator Code`: código del indicador.
+-   Años: una columna para cada año desde 1960 hasta 2020 con el valor del indicador (porcentaje del PIB).
+
+Para este proyecto, se seleccionaron cinco países de América Central y se reestructuraron los datos al formato largo con el fin de facilitar su análisis y visualización.
+
+------------------------------------------------------------------------
+
+# Problemas o preguntas a investigar
+
+A través del análisis de estos datos, se espera responder las siguientes preguntas:
+
+1.  ¿Ha aumentado o disminuido el aporte de la agricultura al PIB en los países seleccionados?
+2.  ¿Qué países muestran tendencias similares en este indicador?
+3.  ¿Hay periodos donde los cambios son especialmente marcados?
+4.  ¿Se observan diferencias estructurales entre países de la región?
+
+------------------------------------------------------------------------
+
+# Visualizaciones interactivas
+
+## Gráfico 1: Evolución histórica del aporte agrícola
+
+Este gráfico muestra la evolución del porcentaje del PIB agrícola en los cinco países seleccionados. Permite observar cómo ha cambiado la participación del sector agrícola en el tiempo.
+
+```{r}
+#| label: grafico-1
+#| echo: true
+#| message: false
+#| warning: false
+```
+
+```{r}
+library(tidyverse)
+library(plotly)
+
+# Cargar los datos preparados previamente
+datos <- read_csv("API_NV.AGR.TOTL.ZS_DS2_en_csv_v2_85254.csv", skip = 4)
+
+# Seleccionar países de Centroamérica
+paises <- c("Costa Rica", "Nicaragua", "Guatemala", "El Salvador", "Panama")
+
+# Filtrar solo esos países y seleccionar columnas relevantes
+datos_filtrados <- datos |>
+  filter(`Country Name` %in% paises) |>
+  select(`Country Name`, matches("^\\d{4}$"))  # Años
+
+# Reorganizar datos de ancho a largo
+datos_largos <- datos_filtrados|>
+  pivot_longer(-`Country Name`, names_to = "Año", values_to = "Porcentaje") |>
+  mutate(Año = as.integer(Año))
+```
+
+```{r}
+#| label: grafico-ggplotly
+#| fig-cap: "Evolución del aporte de la agricultura al PIB (1960-2020)"
+#| echo: true
+
+# Gráfico con ggplot2
+grafico1 <- ggplot(datos_largos, aes(x = Año, y = Porcentaje, color = `Country Name`)) +
+  geom_line(size = 1.1) +
+  labs(
+    title = "Participación del sector agrícola en el PIB",
+    x = "Año",
+    y = "% del PIB",
+    color = "País"
+  ) +
+  theme_minimal()
+
+# Convertir en interactivo con plotly
+ggplotly(grafico1)
+```
+
+*Este gráfico muestra cómo ha evolucionado el porcentaje del PIB aportado por la agricultura entre 1960 y 2020 en cinco países de Centroamérica. Como se puede observar, en la mayoría de ellos ha habido una **tendencia decreciente**, lo cual indica una posible diversificación de las economías hacia sectores no agrícolas.*
+
+## Comparación en un año específico
+
+```{r}
+#| label: grafico-plotly
+#| fig-cap: "Porcentaje del PIB agrícola por país en 1990"
+#| echo: true
+
+# Datos para un año específico
+datos_1990 <- datos_largos |> 
+filter(Año == 1990)
+
+plot_ly(datos_1990,
+        x = ~`Country Name`,
+        y = ~Porcentaje,
+        type = "bar",
+        color = ~`Country Name`) |>
+  layout(
+    title = "Porcentaje del PIB agrícola por país en 1990",
+    xaxis = list(title = "País"),
+    yaxis = list(title = "% del PIB agrícola")
+  )
+```
+
+*Este gráfico de barras muestra el valor porcentual del PIB agrícola en el año 1990. Se puede observar que Nicaragua y Guatemala presentaban niveles más altos que Panamá o Costa Rica. Esta diferencia podría estar relacionada con el grado de industrialización y urbanización que experimentaba cada país.*

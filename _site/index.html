@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Franchesca Moraga">
+
+<title>Evolución del aporte de la agricultura al PIB en distintos países. – agricultura-pib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">agricultura-pib</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">1</span> Introducción</a>
+  <ul class="collapse">
+  <li><a href="#el-estudio-de-estos-cambios-es-importante-ya-que-permite-identificar-tendencias-que-podrían-estar-relacionadas-con-la-diversificación-económica-el-desarrollo-tecnológico-las-políticas-públicas-o-incluso-con-fenómenos-sociales-y-ambientales-que-afectan-al-sector-agrícola." id="toc-el-estudio-de-estos-cambios-es-importante-ya-que-permite-identificar-tendencias-que-podrían-estar-relacionadas-con-la-diversificación-económica-el-desarrollo-tecnológico-las-políticas-públicas-o-incluso-con-fenómenos-sociales-y-ambientales-que-afectan-al-sector-agrícola." class="nav-link" data-scroll-target="#el-estudio-de-estos-cambios-es-importante-ya-que-permite-identificar-tendencias-que-podrían-estar-relacionadas-con-la-diversificación-económica-el-desarrollo-tecnológico-las-políticas-públicas-o-incluso-con-fenómenos-sociales-y-ambientales-que-afectan-al-sector-agrícola."><span class="header-section-number">1.1</span> El estudio de estos cambios es importante, ya que permite identificar tendencias que podrían estar relacionadas con la diversificación económica, el desarrollo tecnológico, las políticas públicas, o incluso con fenómenos sociales y ambientales que afectan al sector agrícola.</a></li>
+  </ul></li>
+  <li><a href="#conjunto-de-datos" id="toc-conjunto-de-datos" class="nav-link" data-scroll-target="#conjunto-de-datos"><span class="header-section-number">2</span> Conjunto de datos</a>
+  <ul class="collapse">
+  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link" data-scroll-target="#descripción-general"><span class="header-section-number">2.1</span> Descripción general</a></li>
+  <li><a href="#principales-variables" id="toc-principales-variables" class="nav-link" data-scroll-target="#principales-variables"><span class="header-section-number">2.2</span> Principales variables</a></li>
+  </ul></li>
+  <li><a href="#problemas-o-preguntas-a-investigar" id="toc-problemas-o-preguntas-a-investigar" class="nav-link" data-scroll-target="#problemas-o-preguntas-a-investigar"><span class="header-section-number">3</span> Problemas o preguntas a investigar</a></li>
+  <li><a href="#visualizaciones-interactivas" id="toc-visualizaciones-interactivas" class="nav-link" data-scroll-target="#visualizaciones-interactivas"><span class="header-section-number">4</span> Visualizaciones interactivas</a>
+  <ul class="collapse">
+  <li><a href="#gráfico-1-evolución-histórica-del-aporte-agrícola" id="toc-gráfico-1-evolución-histórica-del-aporte-agrícola" class="nav-link" data-scroll-target="#gráfico-1-evolución-histórica-del-aporte-agrícola"><span class="header-section-number">4.1</span> Gráfico 1: Evolución histórica del aporte agrícola</a></li>
+  <li><a href="#comparación-en-un-año-específico" id="toc-comparación-en-un-año-específico" class="nav-link" data-scroll-target="#comparación-en-un-año-específico"><span class="header-section-number">4.2</span> Comparación en un año específico</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Evolución del aporte de la agricultura al PIB en distintos países.</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Franchesca Moraga </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción</h1>
+<p>La agricultura ha sido históricamente una de las actividades económicas fundamentales en muchas regiones del mundo. En países en desarrollo, especialmente en América Latina, el sector agrícola no solo ha representado una fuente importante de empleo, sino también un componente esencial del Producto Interno Bruto (PIB). Este sector ha sido clave para garantizar la seguridad alimentaria, promover la estabilidad social y contribuir a la generación de divisas mediante la exportación de productos agrícolas.</p>
+<p>Sin embargo, con el paso del tiempo, muchos países han experimentado procesos de transformación económica que han modificado significativamente la participación relativa de este sector en sus economías. El crecimiento industrial, la urbanización acelerada y el auge de los servicios han desplazado, en muchos casos, la importancia del sector agrícola. A pesar de esto, la agricultura sigue siendo vital en términos de generación de empleo rural y desarrollo regional.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="agriculturalatinoamerica.jpg" class="img-fluid figure-img"></p>
+<figcaption>Análisis y perspectivas de la agricultura en América Latina</figcaption>
+</figure>
+</div>
+<p><em>Fuente: <a href="https://www.foodnewslatam.com/7569-análisis-y-perspectivas-de-la-agricultura-y-para-2018.html">Food News Latam</a></em></p>
+<p>Este sitio presenta un análisis exploratorio sobre la evolución del aporte del sector agrícola al PIB en distintos países entre 1960 y 2020. Para ello, se utiliza un conjunto de datos proporcionado por el Banco Mundial, obtenido a través de la plataforma Kaggle. El enfoque se centra en países de América Latina, como Costa Rica, Nicaragua, Guatemala, El Salvador y Panamá, con el objetivo de comparar sus trayectorias económicas en relación con la participación del sector agrícola.</p>
+<p>Este análisis busca entender mejor cómo se han comportado estos países a lo largo del tiempo en cuanto al peso que el sector agrícola representa dentro de sus economías. Entre las principales preguntas que se plantean destacan: ¿cómo ha cambiado el peso relativo del sector agrícola en la economía costarricense?, ¿existen patrones similares entre los países de la región?, ¿qué factores podrían estar detrás de estos cambios?</p>
+<section id="el-estudio-de-estos-cambios-es-importante-ya-que-permite-identificar-tendencias-que-podrían-estar-relacionadas-con-la-diversificación-económica-el-desarrollo-tecnológico-las-políticas-públicas-o-incluso-con-fenómenos-sociales-y-ambientales-que-afectan-al-sector-agrícola." class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="el-estudio-de-estos-cambios-es-importante-ya-que-permite-identificar-tendencias-que-podrían-estar-relacionadas-con-la-diversificación-económica-el-desarrollo-tecnológico-las-políticas-públicas-o-incluso-con-fenómenos-sociales-y-ambientales-que-afectan-al-sector-agrícola."><span class="header-section-number">1.1</span> El estudio de estos cambios es importante, ya que permite identificar tendencias que podrían estar relacionadas con la diversificación económica, el desarrollo tecnológico, las políticas públicas, o incluso con fenómenos sociales y ambientales que afectan al sector agrícola.</h2>
+</section>
+</section>
+<section id="conjunto-de-datos" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conjunto de datos</h1>
+<section id="descripción-general" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">2.1</span> Descripción general</h2>
+<p>El conjunto de datos fue publicado por el <strong>Banco Mundial</strong> y contiene estadísticas anuales sobre el porcentaje del PIB que corresponde al sector agrícola en más de 200 países. La cobertura temporal va desde el año <strong>1960 hasta 2020</strong>, y los datos están expresados en porcentajes anuales del PIB.</p>
+<p>La fuente original de los datos puede consultarse en este <a href="https://data.worldbank.org/indicator/NV.AGR.TOTL.ZS">enlace al Banco Mundial</a>.</p>
+</section>
+<section id="principales-variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="principales-variables"><span class="header-section-number">2.2</span> Principales variables</h2>
+<p>Las columnas principales del conjunto de datos son:</p>
+<ul>
+<li><code>Country Name</code>: nombre del país.</li>
+<li><code>Country Code</code>: código estándar de tres letras.</li>
+<li><code>Indicator Name</code>: nombre del indicador.</li>
+<li><code>Indicator Code</code>: código del indicador.</li>
+<li>Años: una columna para cada año desde 1960 hasta 2020 con el valor del indicador (porcentaje del PIB).</li>
+</ul>
+<p>Para este proyecto, se seleccionaron cinco países de América Central y se reestructuraron los datos al formato largo con el fin de facilitar su análisis y visualización.</p>
+<hr>
+</section>
+</section>
+<section id="problemas-o-preguntas-a-investigar" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problemas o preguntas a investigar</h1>
+<p>A través del análisis de estos datos, se espera responder las siguientes preguntas:</p>
+<ol type="1">
+<li>¿Ha aumentado o disminuido el aporte de la agricultura al PIB en los países seleccionados?</li>
+<li>¿Qué países muestran tendencias similares en este indicador?</li>
+<li>¿Hay periodos donde los cambios son especialmente marcados?</li>
+<li>¿Se observan diferencias estructurales entre países de la región?</li>
+</ol>
+<hr>
+</section>
+<section id="visualizaciones-interactivas" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Visualizaciones interactivas</h1>
+<section id="gráfico-1-evolución-histórica-del-aporte-agrícola" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="gráfico-1-evolución-histórica-del-aporte-agrícola"><span class="header-section-number">4.1</span> Gráfico 1: Evolución histórica del aporte agrícola</h2>
+<p>Este gráfico muestra la evolución del porcentaje del PIB agrícola en los cinco países seleccionados. Permite observar cómo ha cambiado la participación del sector agrícola en el tiempo.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'
+
+The following object is masked from 'package:ggplot2':
+
+    last_plot
+
+The following object is masked from 'package:stats':
+
+    filter
+
+The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar los datos preparados previamente</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"API_NV.AGR.TOTL.ZS_DS2_en_csv_v2_85254.csv"</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+Rows: 266 Columns: 70
+── Column specification
+──────────────────────────────────────────────────────── Delimiter: "," chr
+(4): Country Name, Country Code, Indicator Name, Indicator Code dbl (64): 1960,
+1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, ... lgl (2): 2024,
+...70
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...70`</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar países de Centroamérica</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>paises <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Costa Rica"</span>, <span class="st">"Nicaragua"</span>, <span class="st">"Guatemala"</span>, <span class="st">"El Salvador"</span>, <span class="st">"Panama"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar solo esos países y seleccionar columnas relevantes</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Country Name</span><span class="st">`</span> <span class="sc">%in%</span> paises) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>, <span class="fu">matches</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">d{4}$"</span>))  <span class="co"># Años</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorganizar datos de ancho a largo</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>datos_largos <span class="ot">&lt;-</span> datos_filtrados<span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>, <span class="at">names_to =</span> <span class="st">"Año"</span>, <span class="at">values_to =</span> <span class="st">"Porcentaje"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(Año <span class="ot">=</span> <span class="fu">as.integer</span>(Año))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico con ggplot2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>grafico1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(datos_largos, <span class="fu">aes</span>(<span class="at">x =</span> Año, <span class="at">y =</span> Porcentaje, <span class="at">color =</span> <span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Participación del sector agrícola en el PIB"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Año"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"% del PIB"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"País"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir en interactivo con plotly</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(grafico1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-38b851e0e9fb783ce4b6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-38b851e0e9fb783ce4b6">{"x":{"data":[{"x":[1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"y":[26.3520345148027,25.8662417279319,25.826896902416799,24.4638946637807,24.569034469371498,23.520426446713699,23.1811409001558,23.200759118652599,23.278132585837501,23.1499651097207,22.519734003210498,20.424548988001199,20.094208719783801,20.227505114662801,19.419327159509699,20.338478870895301,20.3761922265859,21.885480102797899,20.413726289312201,18.501404936883599,17.804639136256998,23.0190514369806,24.494718913639399,21.997463538363998,21.207906955915199,18.8666318377444,20.897739591279599,18.070637752896499,17.948646834187901,17.220393852514199,15.78742116015,11.944556990087101,11.9001491093974,11.8282300115977,12.3199679785456,12.758127450194699,12.102496408445299,12.503091336030099,12.618968848322,11.1096929634483,9.2488231853434506,8.3795362700738405,8.4277502901843704,8.8400780087151407,8.8524087680023804,8.6222369462672699,8.4298281970663407,7.9153110434290301,6.9769604693420497,7.0496297006620798,6.4851894083594699,5.5998721223086099,5.1308419142905901,4.7833509329485304,4.88788378983139,4.7491104290484101,4.9143557868633003,4.6997763315990104,4.4838283372217296,4.2020511630246498,4.3442255603549702,4.3667132593712701,4.14007362090085,3.8004765728883898,null],"text":["Año: 1960<br />Porcentaje: 26.352035<br />Country Name: Costa Rica","Año: 1961<br />Porcentaje: 25.866242<br />Country Name: Costa Rica","Año: 1962<br />Porcentaje: 25.826897<br />Country Name: Costa Rica","Año: 1963<br />Porcentaje: 24.463895<br />Country Name: Costa Rica","Año: 1964<br />Porcentaje: 24.569034<br />Country Name: Costa Rica","Año: 1965<br />Porcentaje: 23.520426<br />Country Name: Costa Rica","Año: 1966<br />Porcentaje: 23.181141<br />Country Name: Costa Rica","Año: 1967<br />Porcentaje: 23.200759<br />Country Name: Costa Rica","Año: 1968<br />Porcentaje: 23.278133<br />Country Name: Costa Rica","Año: 1969<br />Porcentaje: 23.149965<br />Country Name: Costa Rica","Año: 1970<br />Porcentaje: 22.519734<br />Country Name: Costa Rica","Año: 1971<br />Porcentaje: 20.424549<br />Country Name: Costa Rica","Año: 1972<br />Porcentaje: 20.094209<br />Country Name: Costa Rica","Año: 1973<br />Porcentaje: 20.227505<br />Country Name: Costa Rica","Año: 1974<br />Porcentaje: 19.419327<br />Country Name: Costa Rica","Año: 1975<br />Porcentaje: 20.338479<br />Country Name: Costa Rica","Año: 1976<br />Porcentaje: 20.376192<br />Country Name: Costa Rica","Año: 1977<br />Porcentaje: 21.885480<br />Country Name: Costa Rica","Año: 1978<br />Porcentaje: 20.413726<br />Country Name: Costa Rica","Año: 1979<br />Porcentaje: 18.501405<br />Country Name: Costa Rica","Año: 1980<br />Porcentaje: 17.804639<br />Country Name: Costa Rica","Año: 1981<br />Porcentaje: 23.019051<br />Country Name: Costa Rica","Año: 1982<br />Porcentaje: 24.494719<br />Country Name: Costa Rica","Año: 1983<br />Porcentaje: 21.997464<br />Country Name: Costa Rica","Año: 1984<br />Porcentaje: 21.207907<br />Country Name: Costa Rica","Año: 1985<br />Porcentaje: 18.866632<br />Country Name: Costa Rica","Año: 1986<br />Porcentaje: 20.897740<br />Country Name: Costa Rica","Año: 1987<br />Porcentaje: 18.070638<br />Country Name: Costa Rica","Año: 1988<br />Porcentaje: 17.948647<br />Country Name: Costa Rica","Año: 1989<br />Porcentaje: 17.220394<br />Country Name: Costa Rica","Año: 1990<br />Porcentaje: 15.787421<br />Country Name: Costa Rica","Año: 1991<br />Porcentaje: 11.944557<br />Country Name: Costa Rica","Año: 1992<br />Porcentaje: 11.900149<br />Country Name: Costa Rica","Año: 1993<br />Porcentaje: 11.828230<br />Country Name: Costa Rica","Año: 1994<br />Porcentaje: 12.319968<br />Country Name: Costa Rica","Año: 1995<br />Porcentaje: 12.758127<br />Country Name: Costa Rica","Año: 1996<br />Porcentaje: 12.102496<br />Country Name: Costa Rica","Año: 1997<br />Porcentaje: 12.503091<br />Country Name: Costa Rica","Año: 1998<br />Porcentaje: 12.618969<br />Country Name: Costa Rica","Año: 1999<br />Porcentaje: 11.109693<br />Country Name: Costa Rica","Año: 2000<br />Porcentaje:  9.248823<br />Country Name: Costa Rica","Año: 2001<br />Porcentaje:  8.379536<br />Country Name: Costa Rica","Año: 2002<br />Porcentaje:  8.427750<br />Country Name: Costa Rica","Año: 2003<br />Porcentaje:  8.840078<br />Country Name: Costa Rica","Año: 2004<br />Porcentaje:  8.852409<br />Country Name: Costa Rica","Año: 2005<br />Porcentaje:  8.622237<br />Country Name: Costa Rica","Año: 2006<br />Porcentaje:  8.429828<br />Country Name: Costa Rica","Año: 2007<br />Porcentaje:  7.915311<br />Country Name: Costa Rica","Año: 2008<br />Porcentaje:  6.976960<br />Country Name: Costa Rica","Año: 2009<br />Porcentaje:  7.049630<br />Country Name: Costa Rica","Año: 2010<br />Porcentaje:  6.485189<br />Country Name: Costa Rica","Año: 2011<br />Porcentaje:  5.599872<br />Country Name: Costa Rica","Año: 2012<br />Porcentaje:  5.130842<br />Country Name: Costa Rica","Año: 2013<br />Porcentaje:  4.783351<br />Country Name: Costa Rica","Año: 2014<br />Porcentaje:  4.887884<br />Country Name: Costa Rica","Año: 2015<br />Porcentaje:  4.749110<br />Country Name: Costa Rica","Año: 2016<br />Porcentaje:  4.914356<br />Country Name: Costa Rica","Año: 2017<br />Porcentaje:  4.699776<br />Country Name: Costa Rica","Año: 2018<br />Porcentaje:  4.483828<br />Country Name: Costa Rica","Año: 2019<br />Porcentaje:  4.202051<br />Country Name: Costa Rica","Año: 2020<br />Porcentaje:  4.344226<br />Country Name: Costa Rica","Año: 2021<br />Porcentaje:  4.366713<br />Country Name: Costa Rica","Año: 2022<br />Porcentaje:  4.140074<br />Country Name: Costa Rica","Año: 2023<br />Porcentaje:  3.800477<br />Country Name: Costa Rica","Año: 2024<br />Porcentaje:        NA<br />Country Name: Costa Rica"],"type":"scatter","mode":"lines","line":{"width":4.1574803149606305,"color":"rgba(248,118,109,1)","dash":"solid"},"hoveron":"points","name":"Costa Rica","legendgroup":"Costa Rica","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"y":[null,null,null,null,null,41.3753816706922,38.686633961614604,38.504404835074801,37.398992097231798,36.249285305889103,40.440631289058402,39.196708596094801,38.059063716646101,39.827500138665499,37.289600691526402,35.333209385113001,39.333759713876297,43.005944200991799,37.036279236307401,38.902424585188498,37.957893707761002,34.389623275362297,32.593514729733599,31.1805349144201,28.9421253623402,26.911807975679,27.428915179913201,20.7535951200969,20.975194993651399,18.310026955900401,16.013677168400399,15.792391981147301,12.9650323520698,12.728810389856701,12.4617820908552,11.528879161366,10.850327901368001,10.9145568353713,9.4681846436637898,7.9337315716838299,7.1727847766091903,6.6864925979115597,5.8229841982080801,5.4883971344919296,5.7279259126258699,6.1716560076200802,6.0461665673951499,6.9931077049686197,7.0901084067340197,6.6685907319894397,6.98170850697531,7.3301919070311303,6.5143562539306998,5.6133065586950304,5.8668721537683197,5.5297667401647903,5.7321539073961301,5.3930091408088101,5.1327685298520196,5.1464335217926003,5.3548004730111201,4.8122551487201504,4.6757439763518098,4.6054430288202903,null],"text":["Año: 1960<br />Porcentaje:        NA<br />Country Name: El Salvador","Año: 1961<br />Porcentaje:        NA<br />Country Name: El Salvador","Año: 1962<br />Porcentaje:        NA<br />Country Name: El Salvador","Año: 1963<br />Porcentaje:        NA<br />Country Name: El Salvador","Año: 1964<br />Porcentaje:        NA<br />Country Name: El Salvador","Año: 1965<br />Porcentaje: 41.375382<br />Country Name: El Salvador","Año: 1966<br />Porcentaje: 38.686634<br />Country Name: El Salvador","Año: 1967<br />Porcentaje: 38.504405<br />Country Name: El Salvador","Año: 1968<br />Porcentaje: 37.398992<br />Country Name: El Salvador","Año: 1969<br />Porcentaje: 36.249285<br />Country Name: El Salvador","Año: 1970<br />Porcentaje: 40.440631<br />Country Name: El Salvador","Año: 1971<br />Porcentaje: 39.196709<br />Country Name: El Salvador","Año: 1972<br />Porcentaje: 38.059064<br />Country Name: El Salvador","Año: 1973<br />Porcentaje: 39.827500<br />Country Name: El Salvador","Año: 1974<br />Porcentaje: 37.289601<br />Country Name: El Salvador","Año: 1975<br />Porcentaje: 35.333209<br />Country Name: El Salvador","Año: 1976<br />Porcentaje: 39.333760<br />Country Name: El Salvador","Año: 1977<br />Porcentaje: 43.005944<br />Country Name: El Salvador","Año: 1978<br />Porcentaje: 37.036279<br />Country Name: El Salvador","Año: 1979<br />Porcentaje: 38.902425<br />Country Name: El Salvador","Año: 1980<br />Porcentaje: 37.957894<br />Country Name: El Salvador","Año: 1981<br />Porcentaje: 34.389623<br />Country Name: El Salvador","Año: 1982<br />Porcentaje: 32.593515<br />Country Name: El Salvador","Año: 1983<br />Porcentaje: 31.180535<br />Country Name: El Salvador","Año: 1984<br />Porcentaje: 28.942125<br />Country Name: El Salvador","Año: 1985<br />Porcentaje: 26.911808<br />Country Name: El Salvador","Año: 1986<br />Porcentaje: 27.428915<br />Country Name: El Salvador","Año: 1987<br />Porcentaje: 20.753595<br />Country Name: El Salvador","Año: 1988<br />Porcentaje: 20.975195<br />Country Name: El Salvador","Año: 1989<br />Porcentaje: 18.310027<br />Country Name: El Salvador","Año: 1990<br />Porcentaje: 16.013677<br />Country Name: El Salvador","Año: 1991<br />Porcentaje: 15.792392<br />Country Name: El Salvador","Año: 1992<br />Porcentaje: 12.965032<br />Country Name: El Salvador","Año: 1993<br />Porcentaje: 12.728810<br />Country Name: El Salvador","Año: 1994<br />Porcentaje: 12.461782<br />Country Name: El Salvador","Año: 1995<br />Porcentaje: 11.528879<br />Country Name: El Salvador","Año: 1996<br />Porcentaje: 10.850328<br />Country Name: El Salvador","Año: 1997<br />Porcentaje: 10.914557<br />Country Name: El Salvador","Año: 1998<br />Porcentaje:  9.468185<br />Country Name: El Salvador","Año: 1999<br />Porcentaje:  7.933732<br />Country Name: El Salvador","Año: 2000<br />Porcentaje:  7.172785<br />Country Name: El Salvador","Año: 2001<br />Porcentaje:  6.686493<br />Country Name: El Salvador","Año: 2002<br />Porcentaje:  5.822984<br />Country Name: El Salvador","Año: 2003<br />Porcentaje:  5.488397<br />Country Name: El Salvador","Año: 2004<br />Porcentaje:  5.727926<br />Country Name: El Salvador","Año: 2005<br />Porcentaje:  6.171656<br />Country Name: El Salvador","Año: 2006<br />Porcentaje:  6.046167<br />Country Name: El Salvador","Año: 2007<br />Porcentaje:  6.993108<br />Country Name: El Salvador","Año: 2008<br />Porcentaje:  7.090108<br />Country Name: El Salvador","Año: 2009<br />Porcentaje:  6.668591<br />Country Name: El Salvador","Año: 2010<br />Porcentaje:  6.981709<br />Country Name: El Salvador","Año: 2011<br />Porcentaje:  7.330192<br />Country Name: El Salvador","Año: 2012<br />Porcentaje:  6.514356<br />Country Name: El Salvador","Año: 2013<br />Porcentaje:  5.613307<br />Country Name: El Salvador","Año: 2014<br />Porcentaje:  5.866872<br />Country Name: El Salvador","Año: 2015<br />Porcentaje:  5.529767<br />Country Name: El Salvador","Año: 2016<br />Porcentaje:  5.732154<br />Country Name: El Salvador","Año: 2017<br />Porcentaje:  5.393009<br />Country Name: El Salvador","Año: 2018<br />Porcentaje:  5.132769<br />Country Name: El Salvador","Año: 2019<br />Porcentaje:  5.146434<br />Country Name: El Salvador","Año: 2020<br />Porcentaje:  5.354800<br />Country Name: El Salvador","Año: 2021<br />Porcentaje:  4.812255<br />Country Name: El Salvador","Año: 2022<br />Porcentaje:  4.675744<br />Country Name: El Salvador","Año: 2023<br />Porcentaje:  4.605443<br />Country Name: El Salvador","Año: 2024<br />Porcentaje:        NA<br />Country Name: El Salvador"],"type":"scatter","mode":"lines","line":{"width":4.1574803149606305,"color":"rgba(163,165,0,1)","dash":"solid"},"hoveron":"points","name":"El Salvador","legendgroup":"El Salvador","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"y":[null,null,null,null,null,28.733763612270099,28.512482922269399,27.413181974544202,27.927370381869,27.2952388536341,27.316339285714299,27.6997027408303,28.2880502546043,27.892506309648699,27.8979069396776,28.048627225102202,27.294674945837599,26.305160977824599,25.843563211426801,25.381506232970001,24.844719306484599,24.9856116763656,25.124295920303901,25.341906062236198,25.626271112710999,25.851498902955299,25.610503058400699,25.978769713257702,25.848626697939899,25.634800044204301,25.879159820107098,25.739981757218001,25.285048035702498,24.8661004165455,24.487266396336899,24.150723537373601,24.056099937754901,23.7267418759523,23.4398988332233,23.0463598231227,22.821147934217901,14.172146839788599,14.170286852765701,13.469127896393699,13.0735432996184,12.589967693600199,11.449068285382101,11.637607927039101,11.3336648903463,11.8486078978063,11.2341516901897,11.258742752003601,10.7227497533367,10.356221102386799,10.0744834989334,9.9670030315626406,9.6613954727504403,9.6962866319675403,9.4355075654460006,9.4087255506427301,9.9263197614925502,9.1849508446486503,9.1263354264053191,9.7700977922132104,null],"text":["Año: 1960<br />Porcentaje:        NA<br />Country Name: Guatemala","Año: 1961<br />Porcentaje:        NA<br />Country Name: Guatemala","Año: 1962<br />Porcentaje:        NA<br />Country Name: Guatemala","Año: 1963<br />Porcentaje:        NA<br />Country Name: Guatemala","Año: 1964<br />Porcentaje:        NA<br />Country Name: Guatemala","Año: 1965<br />Porcentaje: 28.733764<br />Country Name: Guatemala","Año: 1966<br />Porcentaje: 28.512483<br />Country Name: Guatemala","Año: 1967<br />Porcentaje: 27.413182<br />Country Name: Guatemala","Año: 1968<br />Porcentaje: 27.927370<br />Country Name: Guatemala","Año: 1969<br />Porcentaje: 27.295239<br />Country Name: Guatemala","Año: 1970<br />Porcentaje: 27.316339<br />Country Name: Guatemala","Año: 1971<br />Porcentaje: 27.699703<br />Country Name: Guatemala","Año: 1972<br />Porcentaje: 28.288050<br />Country Name: Guatemala","Año: 1973<br />Porcentaje: 27.892506<br />Country Name: Guatemala","Año: 1974<br />Porcentaje: 27.897907<br />Country Name: Guatemala","Año: 1975<br />Porcentaje: 28.048627<br />Country Name: Guatemala","Año: 1976<br />Porcentaje: 27.294675<br />Country Name: Guatemala","Año: 1977<br />Porcentaje: 26.305161<br />Country Name: Guatemala","Año: 1978<br />Porcentaje: 25.843563<br />Country Name: Guatemala","Año: 1979<br />Porcentaje: 25.381506<br />Country Name: Guatemala","Año: 1980<br />Porcentaje: 24.844719<br />Country Name: Guatemala","Año: 1981<br />Porcentaje: 24.985612<br />Country Name: Guatemala","Año: 1982<br />Porcentaje: 25.124296<br />Country Name: Guatemala","Año: 1983<br />Porcentaje: 25.341906<br />Country Name: Guatemala","Año: 1984<br />Porcentaje: 25.626271<br />Country Name: Guatemala","Año: 1985<br />Porcentaje: 25.851499<br />Country Name: Guatemala","Año: 1986<br />Porcentaje: 25.610503<br />Country Name: Guatemala","Año: 1987<br />Porcentaje: 25.978770<br />Country Name: Guatemala","Año: 1988<br />Porcentaje: 25.848627<br />Country Name: Guatemala","Año: 1989<br />Porcentaje: 25.634800<br />Country Name: Guatemala","Año: 1990<br />Porcentaje: 25.879160<br />Country Name: Guatemala","Año: 1991<br />Porcentaje: 25.739982<br />Country Name: Guatemala","Año: 1992<br />Porcentaje: 25.285048<br />Country Name: Guatemala","Año: 1993<br />Porcentaje: 24.866100<br />Country Name: Guatemala","Año: 1994<br />Porcentaje: 24.487266<br />Country Name: Guatemala","Año: 1995<br />Porcentaje: 24.150724<br />Country Name: Guatemala","Año: 1996<br />Porcentaje: 24.056100<br />Country Name: Guatemala","Año: 1997<br />Porcentaje: 23.726742<br />Country Name: Guatemala","Año: 1998<br />Porcentaje: 23.439899<br />Country Name: Guatemala","Año: 1999<br />Porcentaje: 23.046360<br />Country Name: Guatemala","Año: 2000<br />Porcentaje: 22.821148<br />Country Name: Guatemala","Año: 2001<br />Porcentaje: 14.172147<br />Country Name: Guatemala","Año: 2002<br />Porcentaje: 14.170287<br />Country Name: Guatemala","Año: 2003<br />Porcentaje: 13.469128<br />Country Name: Guatemala","Año: 2004<br />Porcentaje: 13.073543<br />Country Name: Guatemala","Año: 2005<br />Porcentaje: 12.589968<br />Country Name: Guatemala","Año: 2006<br />Porcentaje: 11.449068<br />Country Name: Guatemala","Año: 2007<br />Porcentaje: 11.637608<br />Country Name: Guatemala","Año: 2008<br />Porcentaje: 11.333665<br />Country Name: Guatemala","Año: 2009<br />Porcentaje: 11.848608<br />Country Name: Guatemala","Año: 2010<br />Porcentaje: 11.234152<br />Country Name: Guatemala","Año: 2011<br />Porcentaje: 11.258743<br />Country Name: Guatemala","Año: 2012<br />Porcentaje: 10.722750<br />Country Name: Guatemala","Año: 2013<br />Porcentaje: 10.356221<br />Country Name: Guatemala","Año: 2014<br />Porcentaje: 10.074483<br />Country Name: Guatemala","Año: 2015<br />Porcentaje:  9.967003<br />Country Name: Guatemala","Año: 2016<br />Porcentaje:  9.661395<br />Country Name: Guatemala","Año: 2017<br />Porcentaje:  9.696287<br />Country Name: Guatemala","Año: 2018<br />Porcentaje:  9.435508<br />Country Name: Guatemala","Año: 2019<br />Porcentaje:  9.408726<br />Country Name: Guatemala","Año: 2020<br />Porcentaje:  9.926320<br />Country Name: Guatemala","Año: 2021<br />Porcentaje:  9.184951<br />Country Name: Guatemala","Año: 2022<br />Porcentaje:  9.126335<br />Country Name: Guatemala","Año: 2023<br />Porcentaje:  9.770098<br />Country Name: Guatemala","Año: 2024<br />Porcentaje:        NA<br />Country Name: Guatemala"],"type":"scatter","mode":"lines","line":{"width":4.1574803149606305,"color":"rgba(0,191,125,1)","dash":"solid"},"hoveron":"points","name":"Guatemala","legendgroup":"Guatemala","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"y":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,19.019221586678,20.080386457528601,21.405529750581699,19.956771338807499,19.190950883465899,17.000216968819199,17.765505144046202,16.813329468075601,16.430111985103402,15.6259025646946,15.968822270916901,16.137898065388001,15.8997963614332,16.4606319048419,16.2622568377055,16.067799823450301,16.981908774030799,18.884306193026799,17.612190666671999,16.4917927735159,16.7093056812028,16.110115700863101,14.9152818721878,14.9966206430434,15.322588494068,15.5296780421004,15.7302209812818,15.443220674585501,16.523490865306702,15.337577225811801,null],"text":["Año: 1960<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1961<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1962<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1963<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1964<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1965<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1966<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1967<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1968<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1969<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1970<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1971<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1972<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1973<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1974<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1975<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1976<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1977<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1978<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1979<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1980<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1981<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1982<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1983<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1984<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1985<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1986<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1987<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1988<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1989<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1990<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1991<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1992<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1993<br />Porcentaje:        NA<br />Country Name: Nicaragua","Año: 1994<br />Porcentaje: 19.019222<br />Country Name: Nicaragua","Año: 1995<br />Porcentaje: 20.080386<br />Country Name: Nicaragua","Año: 1996<br />Porcentaje: 21.405530<br />Country Name: Nicaragua","Año: 1997<br />Porcentaje: 19.956771<br />Country Name: Nicaragua","Año: 1998<br />Porcentaje: 19.190951<br />Country Name: Nicaragua","Año: 1999<br />Porcentaje: 17.000217<br />Country Name: Nicaragua","Año: 2000<br />Porcentaje: 17.765505<br />Country Name: Nicaragua","Año: 2001<br />Porcentaje: 16.813329<br />Country Name: Nicaragua","Año: 2002<br />Porcentaje: 16.430112<br />Country Name: Nicaragua","Año: 2003<br />Porcentaje: 15.625903<br />Country Name: Nicaragua","Año: 2004<br />Porcentaje: 15.968822<br />Country Name: Nicaragua","Año: 2005<br />Porcentaje: 16.137898<br />Country Name: Nicaragua","Año: 2006<br />Porcentaje: 15.899796<br />Country Name: Nicaragua","Año: 2007<br />Porcentaje: 16.460632<br />Country Name: Nicaragua","Año: 2008<br />Porcentaje: 16.262257<br />Country Name: Nicaragua","Año: 2009<br />Porcentaje: 16.067800<br />Country Name: Nicaragua","Año: 2010<br />Porcentaje: 16.981909<br />Country Name: Nicaragua","Año: 2011<br />Porcentaje: 18.884306<br />Country Name: Nicaragua","Año: 2012<br />Porcentaje: 17.612191<br />Country Name: Nicaragua","Año: 2013<br />Porcentaje: 16.491793<br />Country Name: Nicaragua","Año: 2014<br />Porcentaje: 16.709306<br />Country Name: Nicaragua","Año: 2015<br />Porcentaje: 16.110116<br />Country Name: Nicaragua","Año: 2016<br />Porcentaje: 14.915282<br />Country Name: Nicaragua","Año: 2017<br />Porcentaje: 14.996621<br />Country Name: Nicaragua","Año: 2018<br />Porcentaje: 15.322588<br />Country Name: Nicaragua","Año: 2019<br />Porcentaje: 15.529678<br />Country Name: Nicaragua","Año: 2020<br />Porcentaje: 15.730221<br />Country Name: Nicaragua","Año: 2021<br />Porcentaje: 15.443221<br />Country Name: Nicaragua","Año: 2022<br />Porcentaje: 16.523491<br />Country Name: Nicaragua","Año: 2023<br />Porcentaje: 15.337577<br />Country Name: Nicaragua","Año: 2024<br />Porcentaje:        NA<br />Country Name: Nicaragua"],"type":"scatter","mode":"lines","line":{"width":4.1574803149606305,"color":"rgba(0,176,246,1)","dash":"solid"},"hoveron":"points","name":"Nicaragua","legendgroup":"Nicaragua","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"y":[null,null,null,null,null,null,null,null,null,null,10.8275356800678,10.5711255178431,10.019560637708,9.4787556483369606,8.2717484507205494,8.2828382705880497,8.7604680797463494,9.44093404652053,8.7236766196794804,8.0562489668115305,7.4037603630482502,7.2521319851337198,6.7607468231087804,7.2342768208933101,6.75708949226226,6.8647760624213596,7.3370618542005603,7.4197837436466001,7.9604733590597299,8.5038602376580492,8.0741352885397095,7.6562762489954501,6.9196932628183498,6.5900594601676197,6.46078992665021,6.4859336044945204,6.8622166191557703,6.6468821737791499,6.661808213954,6.1305153698771297,6.3121354561823697,6.6952303389441603,6.61481084465062,6.7191903292810302,6.20690447123381,5.7233905192694596,5.2918083477290896,4.7526485380606998,4.4442304845224196,3.7830612338636298,3.6360032899331398,3.27922461816528,3.1287768788750201,3.0539507489712898,2.9866775564883099,2.9496163020119202,2.78054588931133,2.5726218847147502,2.4461817006236699,2.4550807779519701,3.0641884043624299,2.8028921577664598,2.6115208615490499,2.4502821304530999,null],"text":["Año: 1960<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1961<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1962<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1963<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1964<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1965<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1966<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1967<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1968<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1969<br />Porcentaje:        NA<br />Country Name: Panama","Año: 1970<br />Porcentaje: 10.827536<br />Country Name: Panama","Año: 1971<br />Porcentaje: 10.571126<br />Country Name: Panama","Año: 1972<br />Porcentaje: 10.019561<br />Country Name: Panama","Año: 1973<br />Porcentaje:  9.478756<br />Country Name: Panama","Año: 1974<br />Porcentaje:  8.271748<br />Country Name: Panama","Año: 1975<br />Porcentaje:  8.282838<br />Country Name: Panama","Año: 1976<br />Porcentaje:  8.760468<br />Country Name: Panama","Año: 1977<br />Porcentaje:  9.440934<br />Country Name: Panama","Año: 1978<br />Porcentaje:  8.723677<br />Country Name: Panama","Año: 1979<br />Porcentaje:  8.056249<br />Country Name: Panama","Año: 1980<br />Porcentaje:  7.403760<br />Country Name: Panama","Año: 1981<br />Porcentaje:  7.252132<br />Country Name: Panama","Año: 1982<br />Porcentaje:  6.760747<br />Country Name: Panama","Año: 1983<br />Porcentaje:  7.234277<br />Country Name: Panama","Año: 1984<br />Porcentaje:  6.757089<br />Country Name: Panama","Año: 1985<br />Porcentaje:  6.864776<br />Country Name: Panama","Año: 1986<br />Porcentaje:  7.337062<br />Country Name: Panama","Año: 1987<br />Porcentaje:  7.419784<br />Country Name: Panama","Año: 1988<br />Porcentaje:  7.960473<br />Country Name: Panama","Año: 1989<br />Porcentaje:  8.503860<br />Country Name: Panama","Año: 1990<br />Porcentaje:  8.074135<br />Country Name: Panama","Año: 1991<br />Porcentaje:  7.656276<br />Country Name: Panama","Año: 1992<br />Porcentaje:  6.919693<br />Country Name: Panama","Año: 1993<br />Porcentaje:  6.590059<br />Country Name: Panama","Año: 1994<br />Porcentaje:  6.460790<br />Country Name: Panama","Año: 1995<br />Porcentaje:  6.485934<br />Country Name: Panama","Año: 1996<br />Porcentaje:  6.862217<br />Country Name: Panama","Año: 1997<br />Porcentaje:  6.646882<br />Country Name: Panama","Año: 1998<br />Porcentaje:  6.661808<br />Country Name: Panama","Año: 1999<br />Porcentaje:  6.130515<br />Country Name: Panama","Año: 2000<br />Porcentaje:  6.312135<br />Country Name: Panama","Año: 2001<br />Porcentaje:  6.695230<br />Country Name: Panama","Año: 2002<br />Porcentaje:  6.614811<br />Country Name: Panama","Año: 2003<br />Porcentaje:  6.719190<br />Country Name: Panama","Año: 2004<br />Porcentaje:  6.206904<br />Country Name: Panama","Año: 2005<br />Porcentaje:  5.723391<br />Country Name: Panama","Año: 2006<br />Porcentaje:  5.291808<br />Country Name: Panama","Año: 2007<br />Porcentaje:  4.752649<br />Country Name: Panama","Año: 2008<br />Porcentaje:  4.444230<br />Country Name: Panama","Año: 2009<br />Porcentaje:  3.783061<br />Country Name: Panama","Año: 2010<br />Porcentaje:  3.636003<br />Country Name: Panama","Año: 2011<br />Porcentaje:  3.279225<br />Country Name: Panama","Año: 2012<br />Porcentaje:  3.128777<br />Country Name: Panama","Año: 2013<br />Porcentaje:  3.053951<br />Country Name: Panama","Año: 2014<br />Porcentaje:  2.986678<br />Country Name: Panama","Año: 2015<br />Porcentaje:  2.949616<br />Country Name: Panama","Año: 2016<br />Porcentaje:  2.780546<br />Country Name: Panama","Año: 2017<br />Porcentaje:  2.572622<br />Country Name: Panama","Año: 2018<br />Porcentaje:  2.446182<br />Country Name: Panama","Año: 2019<br />Porcentaje:  2.455081<br />Country Name: Panama","Año: 2020<br />Porcentaje:  3.064188<br />Country Name: Panama","Año: 2021<br />Porcentaje:  2.802892<br />Country Name: Panama","Año: 2022<br />Porcentaje:  2.611521<br />Country Name: Panama","Año: 2023<br />Porcentaje:  2.450282<br />Country Name: Panama","Año: 2024<br />Porcentaje:        NA<br />Country Name: Panama"],"type":"scatter","mode":"lines","line":{"width":4.1574803149606305,"color":"rgba(231,107,243,1)","dash":"solid"},"hoveron":"points","name":"Panama","legendgroup":"Panama","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":40.182648401826491,"l":37.260273972602747},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Participación del sector agrícola en el PIB","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1956.8,2027.2],"tickmode":"array","ticktext":["1960","1980","2000","2020"],"tickvals":[1960,1980,2000,2020],"categoryorder":"array","categoryarray":["1960","1980","2000","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Año","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.41819357560526349,45.033932326010202],"tickmode":"array","ticktext":["10","20","30","40"],"tickvals":[10,20,30,40],"categoryorder":"array","categoryarray":["10","20","30","40"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"% del PIB","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"País","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"bcec116157db":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"bcec116157db","visdat":{"bcec116157db":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Evolución del aporte de la agricultura al PIB (1960-2020)</p>
+</div>
+</div>
+<p><em>Este gráfico muestra cómo ha evolucionado el porcentaje del PIB aportado por la agricultura entre 1960 y 2020 en cinco países de Centroamérica. Como se puede observar, en la mayoría de ellos ha habido una <strong>tendencia decreciente</strong>, lo cual indica una posible diversificación de las economías hacia sectores no agrícolas.</em></p>
+</section>
+<section id="comparación-en-un-año-específico" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="comparación-en-un-año-específico"><span class="header-section-number">4.2</span> Comparación en un año específico</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Datos para un año específico</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>datos_1990 <span class="ot">&lt;-</span> datos_largos <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(Año <span class="sc">==</span> <span class="dv">1990</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(datos_1990,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="sc">~</span><span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="sc">~</span>Porcentaje,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"bar"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="sc">~</span><span class="st">`</span><span class="at">Country Name</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Porcentaje del PIB agrícola por país en 1990"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"País"</span>),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"% del PIB agrícola"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Ignoring 1 observations</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-4f305caa70e004fc5401" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4f305caa70e004fc5401">{"x":{"visdat":{"bcec6b6a7959":["function () ","plotlyVisDat"]},"cur_data":"bcec6b6a7959","attrs":{"bcec6b6a7959":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Porcentaje del PIB agrícola por país en 1990","xaxis":{"domain":[0,1],"automargin":true,"title":"País","type":"category","categoryorder":"array","categoryarray":["Costa Rica","El Salvador","Guatemala","Panama"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"% del PIB agrícola"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Costa Rica"],"y":[15.78742116015],"type":"bar","name":"Costa Rica","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["El Salvador"],"y":[16.013677168400399],"type":"bar","name":"El Salvador","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Guatemala"],"y":[25.879159820107098],"type":"bar","name":"Guatemala","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Panama"],"y":[8.0741352885397095],"type":"bar","name":"Panama","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Porcentaje del PIB agrícola por país en 1990</p>
+</div>
+</div>
+<p><em>Este gráfico de barras muestra el valor porcentual del PIB agrícola en el año 1990. Se puede observar que Nicaragua y Guatemala presentaban niveles más altos que Panamá o Costa Rica. Esta diferencia podría estar relacionada con el grado de industrialización y urbanización que experimentaba cada país.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

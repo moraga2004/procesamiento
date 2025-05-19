@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Evolución del aporte de la agricultura al PIB en distintos países.",
+    "section": "",
+    "text": "La agricultura ha sido históricamente una de las actividades económicas fundamentales en muchas regiones del mundo. En países en desarrollo, especialmente en América Latina, el sector agrícola no solo ha representado una fuente importante de empleo, sino también un componente esencial del Producto Interno Bruto (PIB). Este sector ha sido clave para garantizar la seguridad alimentaria, promover la estabilidad social y contribuir a la generación de divisas mediante la exportación de productos agrícolas.\nSin embargo, con el paso del tiempo, muchos países han experimentado procesos de transformación económica que han modificado significativamente la participación relativa de este sector en sus economías. El crecimiento industrial, la urbanización acelerada y el auge de los servicios han desplazado, en muchos casos, la importancia del sector agrícola. A pesar de esto, la agricultura sigue siendo vital en términos de generación de empleo rural y desarrollo regional.\n\n\n\nAnálisis y perspectivas de la agricultura en América Latina\n\n\nFuente: Food News Latam\nEste sitio presenta un análisis exploratorio sobre la evolución del aporte del sector agrícola al PIB en distintos países entre 1960 y 2020. Para ello, se utiliza un conjunto de datos proporcionado por el Banco Mundial, obtenido a través de la plataforma Kaggle. El enfoque se centra en países de América Latina, como Costa Rica, Nicaragua, Guatemala, El Salvador y Panamá, con el objetivo de comparar sus trayectorias económicas en relación con la participación del sector agrícola.\nEste análisis busca entender mejor cómo se han comportado estos países a lo largo del tiempo en cuanto al peso que el sector agrícola representa dentro de sus economías. Entre las principales preguntas que se plantean destacan: ¿cómo ha cambiado el peso relativo del sector agrícola en la economía costarricense?, ¿existen patrones similares entre los países de la región?, ¿qué factores podrían estar detrás de estos cambios?"
+  },
+  {
+    "objectID": "index.html#descripción-general",
+    "href": "index.html#descripción-general",
+    "title": "Evolución del aporte de la agricultura al PIB en distintos países.",
+    "section": "2.1 Descripción general",
+    "text": "2.1 Descripción general\nEl conjunto de datos fue publicado por el Banco Mundial y contiene estadísticas anuales sobre el porcentaje del PIB que corresponde al sector agrícola en más de 200 países. La cobertura temporal va desde el año 1960 hasta 2020, y los datos están expresados en porcentajes anuales del PIB.\nLa fuente original de los datos puede consultarse en este enlace al Banco Mundial."
+  },
+  {
+    "objectID": "index.html#principales-variables",
+    "href": "index.html#principales-variables",
+    "title": "Evolución del aporte de la agricultura al PIB en distintos países.",
+    "section": "2.2 Principales variables",
+    "text": "2.2 Principales variables\nLas columnas principales del conjunto de datos son:\n\nCountry Name: nombre del país.\nCountry Code: código estándar de tres letras.\nIndicator Name: nombre del indicador.\nIndicator Code: código del indicador.\nAños: una columna para cada año desde 1960 hasta 2020 con el valor del indicador (porcentaje del PIB).\n\nPara este proyecto, se seleccionaron cinco países de América Central y se reestructuraron los datos al formato largo con el fin de facilitar su análisis y visualización."
+  },
+  {
+    "objectID": "index.html#gráfico-1-evolución-histórica-del-aporte-agrícola",
+    "href": "index.html#gráfico-1-evolución-histórica-del-aporte-agrícola",
+    "title": "Evolución del aporte de la agricultura al PIB en distintos países.",
+    "section": "4.1 Gráfico 1: Evolución histórica del aporte agrícola",
+    "text": "4.1 Gráfico 1: Evolución histórica del aporte agrícola\nEste gráfico muestra la evolución del porcentaje del PIB agrícola en los cinco países seleccionados. Permite observar cómo ha cambiado la participación del sector agrícola en el tiempo.\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(plotly)\n\n\n\nAttaching package: 'plotly'\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\nThe following object is masked from 'package:stats':\n\n    filter\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nCode\n# Cargar los datos preparados previamente\ndatos &lt;- read_csv(\"API_NV.AGR.TOTL.ZS_DS2_en_csv_v2_85254.csv\", skip = 4)\n\n\nNew names:\nRows: 266 Columns: 70\n── Column specification\n──────────────────────────────────────────────────────── Delimiter: \",\" chr\n(4): Country Name, Country Code, Indicator Name, Indicator Code dbl (64): 1960,\n1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, ... lgl (2): 2024,\n...70\nℹ Use `spec()` to retrieve the full column specification for this data. ℹ\nSpecify the column types or set `show_col_types = FALSE` to quiet this message.\n• `` -&gt; `...70`\n\n\nCode\n# Seleccionar países de Centroamérica\npaises &lt;- c(\"Costa Rica\", \"Nicaragua\", \"Guatemala\", \"El Salvador\", \"Panama\")\n\n# Filtrar solo esos países y seleccionar columnas relevantes\ndatos_filtrados &lt;- datos |&gt;\n  filter(`Country Name` %in% paises) |&gt;\n  select(`Country Name`, matches(\"^\\\\d{4}$\"))  # Años\n\n# Reorganizar datos de ancho a largo\ndatos_largos &lt;- datos_filtrados|&gt;\n  pivot_longer(-`Country Name`, names_to = \"Año\", values_to = \"Porcentaje\") |&gt;\n  mutate(Año = as.integer(Año))\n\n\n\n\nCode\n# Gráfico con ggplot2\ngrafico1 &lt;- ggplot(datos_largos, aes(x = Año, y = Porcentaje, color = `Country Name`)) +\n  geom_line(size = 1.1) +\n  labs(\n    title = \"Participación del sector agrícola en el PIB\",\n    x = \"Año\",\n    y = \"% del PIB\",\n    color = \"País\"\n  ) +\n  theme_minimal()\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nCode\n# Convertir en interactivo con plotly\nggplotly(grafico1)\n\n\n\n\nEvolución del aporte de la agricultura al PIB (1960-2020)\n\n\nEste gráfico muestra cómo ha evolucionado el porcentaje del PIB aportado por la agricultura entre 1960 y 2020 en cinco países de Centroamérica. Como se puede observar, en la mayoría de ellos ha habido una tendencia decreciente, lo cual indica una posible diversificación de las economías hacia sectores no agrícolas."
+  },
+  {
+    "objectID": "index.html#comparación-en-un-año-específico",
+    "href": "index.html#comparación-en-un-año-específico",
+    "title": "Evolución del aporte de la agricultura al PIB en distintos países.",
+    "section": "4.2 Comparación en un año específico",
+    "text": "4.2 Comparación en un año específico\n\n\nCode\n# Datos para un año específico\ndatos_1990 &lt;- datos_largos |&gt; \nfilter(Año == 1990)\n\nplot_ly(datos_1990,\n        x = ~`Country Name`,\n        y = ~Porcentaje,\n        type = \"bar\",\n        color = ~`Country Name`) |&gt;\n  layout(\n    title = \"Porcentaje del PIB agrícola por país en 1990\",\n    xaxis = list(title = \"País\"),\n    yaxis = list(title = \"% del PIB agrícola\")\n  )\n\n\nWarning: Ignoring 1 observations\n\n\n\n\nPorcentaje del PIB agrícola por país en 1990\n\n\nEste gráfico de barras muestra el valor porcentual del PIB agrícola en el año 1990. Se puede observar que Nicaragua y Guatemala presentaban niveles más altos que Panamá o Costa Rica. Esta diferencia podría estar relacionada con el grado de industrialización y urbanización que experimentaba cada país."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]
